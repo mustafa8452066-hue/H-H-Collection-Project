@@ -880,19 +880,6 @@ body {
   width: 75px;
 }
 
-/* BRAND LOGO LINK */
-
-.brand-card a {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-
-  text-decoration: none;
-}
-
 /* BRAND LOGO IMAGE */
 
 .brand-logo {
