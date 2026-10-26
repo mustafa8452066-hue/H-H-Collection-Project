@@ -1,0 +1,2731 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #ffffff;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ======================================
+   NAVIGATION BAR - ORIGINAL STYLING
+====================================== */
+
+.navbar {
+  width: 100%;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1000;
+}
+
+/* LOGO */
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  text-transform: capitalize;
+  transition: 0.5s;
+
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.logo span {
+  color: green;
+}
+
+/* NAVIGATION LINKS */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.nav-links a {
+  position: relative;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+  color: #282c3f;
+  font-family: "Figtree-Regular", Arial, sans-serif;
+  text-decoration: none;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+/* HOVER UNDERLINE */
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 0;
+  height: 2px;
+  background: green;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: green;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* RIGHT SIDE ICONS */
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+  line-height: 1;
+  text-decoration: none;
+  color: inherit;
+
+  transition: 0.3s;
+  flex-shrink: 0;
+}
+
+.icon:hover {
+  transform: translateY(-3px);
+}
+
+/* SHOP NOW BUTTON */
+
+.btns {
+  display: inline-block;
+
+  padding: 13px 20px;
+  background: green;
+  color: white;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btns:hover {
+  background-color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px black;
+}
+
+/* HAMBURGER - HIDDEN ON DESKTOP */
+
+.menu-checkbox {
+  display: none;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* ======================================
+   TABLET AND MOBILE RESPONSIVE
+====================================== */
+
+@media (max-width: 900px) {
+  /* NAVBAR LAYOUT */
+
+  .navbar {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  /* LOGO */
+
+  .logo {
+    font-size: 23px;
+  }
+
+  /* RIGHT SIDE */
+
+  .nav-right {
+    margin-left: auto;
+    gap: 9px;
+    order: 2;
+  }
+
+  .icon {
+    font-size: 22px;
+  }
+
+  /* COMPACT SHOP NOW - REMAINS VISIBLE */
+
+  .btns {
+    padding: 10px 10px;
+    font-size: 12px;
+    border-radius: 7px;
+  }
+
+  /* HAMBURGER BUTTON */
+
+  .menu-toggle {
+    order: 3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    width: 34px;
+    height: 34px;
+    padding: 0;
+
+    flex-shrink: 0;
+    box-sizing: border-box;
+
+    background: white;
+    border: 1px solid green;
+    border-radius: 5px;
+
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+
+    width: 18px;
+    height: 2px;
+
+    background-color: green;
+    border-radius: 2px;
+
+    transition: 0.3s;
+  }
+
+  /* MOBILE DROPDOWN */
+
+  .nav-links {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    padding: 8px 18px;
+    margin: 0;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-top: none;
+    box-sizing: border-box;
+
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  }
+
+  /* OPEN MENU WHEN HAMBURGER IS CLICKED */
+
+  .menu-checkbox:checked ~ .nav-links {
+    display: flex;
+  }
+
+  /* MOBILE NAVIGATION LINKS */
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+
+    padding: 14px 4px;
+    box-sizing: border-box;
+
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+  /* KEEP UNDERLINE EFFECT */
+
+  .nav-links a::after {
+    bottom: 5px;
+  }
+
+  /* HAMBURGER ANIMATION */
+
+  .menu-checkbox:checked + .menu-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-checkbox:checked + .menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-checkbox:checked + .menu-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+/* ======================================
+   SMALL MOBILE RESPONSIVE
+====================================== */
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 10px;
+    gap: 6px;
+  }
+
+  .logo {
+    font-size: 19px;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-right {
+    gap: 6px;
+  }
+
+  .icon {
+    font-size: 19px;
+  }
+
+  /* SHOP NOW STAYS VISIBLE */
+
+  .btns {
+    padding: 9px 7px;
+    font-size: 10px;
+    border-radius: 6px;
+  }
+
+  /* HAMBURGER STAYS INSIDE SCREEN */
+
+  .menu-toggle {
+    width: 30px;
+    height: 32px;
+    gap: 4px;
+  }
+
+  .menu-toggle span {
+    width: 17px;
+  }
+}
+
+/*  Hero Section  */
+
+/* =========================================
+   H&H COLLECTION - HERO SECTION
+========================================= */
+
+.hero {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 400px;
+
+  margin: 30px auto;
+  padding: 40px;
+
+  background-color: #f7eee5;
+  border: 2px solid green;
+  border-radius: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  box-sizing: border-box;
+}
+
+/* =========================================
+   HERO TEXT CONTENT
+========================================= */
+
+.hero-content {
+  flex: 1;
+  min-width: 0;
+  margin-left: 15px;
+}
+
+.hero-tag {
+  font-size: 11px;
+  letter-spacing: 2px;
+  line-height: 1.8;
+
+  color: #000000;
+
+  margin: 0 0 15px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  line-height: 1.1;
+
+  color: #25231f;
+
+  margin: 0 0 10px;
+
+  font-family: "Cinzel", serif;
+  text-transform: capitalize;
+  overflow-wrap: break-word;
+}
+
+.hero-content h1 span {
+  color: green;
+}
+
+.hero-description {
+  font-size: 14px;
+  line-height: 1.8;
+
+  color: #000000;
+
+  max-width: 380px;
+  margin: 0 0 20px;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================================
+   EXPLORE BUTTON
+========================================= */
+
+.hero-btn {
+  display: inline-block;
+
+  background-color: green;
+  color: white;
+
+  padding: 14px 20px;
+
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+
+  border-radius: 8px;
+
+  transition: 0.7s;
+
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.hero-btn:hover {
+  background-color: #000;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px black;
+}
+
+/* Desktop Button */
+
+.hero-btn-desktop {
+  margin-left: 40px;
+  display: inline-block;
+}
+
+/* Mobile Button Hidden On Desktop */
+
+.hero-btn-mobile {
+  display: none;
+}
+
+/* =========================================
+   HERO BANNER IMAGE
+========================================= */
+
+.hero-image {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+  border-radius: 20px;
+
+  transition: transform 0.5s ease;
+
+  border: 1px solid green;
+  box-sizing: border-box;
+}
+
+.hero-image img:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+   Screens up to 768px
+========================================= */
+
+@media (max-width: 768px) {
+  .hero {
+    width: calc(100% - 32px);
+    min-height: auto;
+
+    margin: 24px auto;
+    padding: 28px 22px;
+
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    gap: 24px;
+  }
+
+  /* Text */
+
+  .hero-content {
+    width: 100%;
+    flex: none;
+
+    margin-left: 0;
+  }
+
+  .hero-tag {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    line-height: 1.8;
+  }
+
+  .hero-content h1 {
+    font-size: 38px;
+    line-height: 1.15;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* Hide Desktop Button */
+
+  .hero-btn-desktop {
+    display: none;
+  }
+
+  /* Image */
+
+  .hero-image {
+    width: 100%;
+    flex: none;
+    min-width: 0;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Show Button Below Image */
+
+  .hero-btn-mobile {
+    display: inline-block;
+
+    align-self: center;
+    margin: 0;
+
+    text-align: center;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+   Screens up to 480px
+========================================= */
+
+@media (max-width: 480px) {
+  .hero {
+    width: calc(100% - 24px);
+
+    margin: 18px auto;
+    padding: 22px 16px;
+
+    gap: 20px;
+
+    border-radius: 14px;
+  }
+
+  /* Small Label */
+
+  .hero-tag {
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    line-height: 1.8;
+
+    margin-bottom: 14px;
+  }
+
+  /* Main Heading */
+
+  .hero-content h1 {
+    font-size: 34px;
+    line-height: 1.15;
+
+    margin-bottom: 14px;
+  }
+
+  /* Description */
+
+  .hero-description {
+    font-size: 13px;
+    line-height: 1.75;
+
+    margin-bottom: 0;
+  }
+
+  /* Banner Image */
+
+  .hero-image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+
+    border-radius: 12px;
+  }
+
+  /* Button Below Banner */
+
+  .hero-btn-mobile {
+    align-self: center;
+
+    padding: 13px 20px;
+
+    font-size: 13px;
+    text-align: center;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE RESPONSIVE
+   Screens up to 360px
+========================================= */
+
+@media (max-width: 360px) {
+  .hero {
+    width: calc(100% - 20px);
+
+    margin: 16px auto;
+    padding: 19px 13px;
+
+    gap: 18px;
+
+    border-radius: 12px;
+  }
+
+  /* Label */
+
+  .hero-tag {
+    font-size: 9px;
+    letter-spacing: 1px;
+    line-height: 1.8;
+  }
+
+  /* Heading */
+
+  .hero-content h1 {
+    font-size: 29px;
+    line-height: 1.2;
+  }
+
+  /* Description */
+
+  .hero-description {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  /* Banner */
+
+  .hero-image img {
+    border-radius: 9px;
+  }
+
+  /* Mobile Button */
+
+  .hero-btn-mobile {
+    padding: 12px 16px;
+    font-size: 12px;
+  }
+}
+
+/* ==========================================
+   H&H COLLECTION - BRAND SECTION
+========================================== */
+
+.brand-section {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 70px auto;
+  padding: 0 20px;
+
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   SECTION HEADING
+========================================== */
+
+.section-heading {
+  position: relative;
+
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto 35px;
+  padding: 25px 20px;
+
+  text-align: center;
+
+  border: 1px solid black;
+  border-radius: 18px;
+
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbf4 100%);
+  box-shadow: 0 8px 28px rgba(37, 35, 31, 0.04);
+}
+
+/* GOLDEN SHINE EFFECT */
+
+.section-heading::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: -150%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    110deg,
+    transparent,
+    rgba(255, 255, 255, 0.85),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+.section-heading:hover::after {
+  animation: headingShine 1.5s ease;
+}
+
+@keyframes headingShine {
+  from {
+    left: -150%;
+  }
+
+  to {
+    left: 150%;
+  }
+}
+
+/* SMALL HEADING LABEL */
+
+.section-heading p {
+  display: inline-block;
+
+  margin: 0 0 16px;
+  padding: 8px 14px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: #456b32;
+  background-color: #edf5e6;
+
+  border: 1px solid #d5e5c8;
+  border-radius: 50px;
+}
+
+/* MAIN HEADING */
+
+.section-heading h2 {
+  font-family: "Cinzel", Georgia, serif;
+
+  font-size: 30px;
+  font-weight: 500;
+
+  color: #25231f;
+
+  margin: 0;
+
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+
+/* ==========================================
+   BRAND CARDS GRID
+========================================== */
+
+.brand-container {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+/* ==========================================
+   INDIVIDUAL BRAND CARD
+========================================== */
+
+.brand-card {
+  min-width: 0;
+
+  background-color: #fbf8f3;
+
+  border: 1px solid #e5ddd1;
+
+  padding: 30px 20px;
+  min-height: 130px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  border-radius: 6px;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* CARD HOVER EFFECT */
+
+.brand-card:hover {
+  transform: translateY(-6px);
+
+  border-color: #b9914b;
+
+  background-color: #ffffff;
+  box-shadow: 0 14px 32px rgba(37, 35, 31, 0.09);
+}
+
+/* GOLDEN ACCENT LINE */
+
+.brand-card::before {
+  content: "";
+
+  display: block;
+  flex-shrink: 0;
+
+  width: 35px;
+  height: 2px;
+
+  background-color: #b9914b;
+
+  margin-bottom: 18px;
+
+  transition: width 0.3s ease;
+}
+
+.brand-card:hover::before {
+  width: 75px;
+}
+
+/* BRAND LOGO LINK */
+
+.brand-card a {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  text-decoration: none;
+}
+
+/* BRAND LOGO IMAGE */
+
+.brand-logo {
+  display: block;
+
+  width: 100%;
+  max-width: 200px;
+
+  height: 70px;
+
+  object-fit: contain;
+
+  margin-bottom: 18px;
+}
+
+/* EXPLORE COLLECTION TEXT */
+
+.brand-card p {
+  font-family: Arial, sans-serif;
+
+  font-size: 11px;
+  letter-spacing: 1px;
+
+  color: #8a7565;
+
+  line-height: 1.6;
+
+  margin: 0;
+
+  transition:
+    color 0.3s ease,
+    letter-spacing 0.3s ease;
+}
+
+.brand-card:hover p {
+  color: #b9914b;
+
+  letter-spacing: 1.5px;
+}
+
+/* ==========================================
+   TABLET RESPONSIVE
+   768px AND BELOW
+========================================== */
+
+@media (max-width: 768px) {
+  .brand-section {
+    margin: 55px auto;
+    padding: 0 16px;
+  }
+
+  /* SECTION HEADING */
+
+  .section-heading {
+    padding: 22px 16px;
+    margin-bottom: 28px;
+
+    border-radius: 14px;
+  }
+
+  .section-heading p {
+    font-size: 13px;
+    letter-spacing: 2.5px;
+  }
+
+  .section-heading h2 {
+    font-size: 27px;
+  }
+
+  /* TWO COLUMNS ON TABLETS */
+
+  .brand-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+  }
+
+  /* CARDS */
+
+  .brand-card {
+    padding: 24px 14px;
+  }
+
+  /* LOGOS */
+
+  .brand-logo {
+    max-width: 170px;
+    height: 60px;
+  }
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   480px AND BELOW
+========================================== */
+
+@media (max-width: 480px) {
+  .brand-section {
+    width: 100%;
+
+    margin: 45px auto;
+    padding: 0 12px;
+  }
+
+  /* HEADING BOX */
+
+  .section-heading {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 20px 12px;
+
+    margin: 0 auto 24px;
+
+    border-radius: 12px;
+  }
+
+  .section-heading p {
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+  }
+
+  .section-heading h2 {
+    font-size: 25px;
+    line-height: 1.25;
+  }
+
+  /* BRAND GRID */
+
+  .brand-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  /* INDIVIDUAL CARDS */
+
+  .brand-card {
+    min-width: 0;
+
+    min-height: 130px;
+
+    padding: 20px 8px;
+
+    border-radius: 6px;
+  }
+
+  /* GOLDEN ACCENT LINE */
+
+  .brand-card::before {
+    width: 30px;
+    margin-bottom: 14px;
+  }
+
+  .brand-card:hover::before {
+    width: 55px;
+  }
+
+  /* LOGO SIZE */
+
+  .brand-logo {
+    width: 100%;
+    max-width: 135px;
+
+    height: 48px;
+
+    object-fit: contain;
+
+    margin-bottom: 14px;
+  }
+
+  /* EXPLORE TEXT */
+
+  .brand-card p {
+    font-size: 10px;
+    letter-spacing: 0.5px;
+
+    line-height: 1.5;
+  }
+
+  .brand-card:hover p {
+    letter-spacing: 0.8px;
+  }
+}
+
+/* ==========================================
+   SMALL MOBILE
+   360px AND BELOW
+========================================== */
+
+@media (max-width: 360px) {
+  .brand-section {
+    padding: 0 10px;
+    margin: 40px auto;
+  }
+
+  /* COMPACT HEADING BOX */
+
+  .section-heading {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 16px 10px;
+
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+  }
+
+  .section-heading p {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .section-heading h2 {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+
+  /* TWO COLUMNS ON SMALL PHONES */
+
+  .brand-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  /* SMALL BRAND CARDS */
+
+  .brand-card {
+    min-height: 120px;
+
+    padding: 16px 6px;
+  }
+
+  .brand-card::before {
+    width: 26px;
+    margin-bottom: 12px;
+  }
+
+  .brand-card:hover::before {
+    width: 45px;
+  }
+
+  /* SMALLER LOGOS */
+
+  .brand-logo {
+    max-width: 110px;
+    height: 40px;
+
+    margin-bottom: 12px;
+  }
+
+  /* TEXT FITS INSIDE THE CARD */
+
+  .brand-card p {
+    font-size: 9px;
+    letter-spacing: 0.3px;
+
+    overflow-wrap: anywhere;
+  }
+
+  .brand-card:hover p {
+    letter-spacing: 0.4px;
+  }
+}
+
+/* ==========================================
+  H&H COLLECTION - FEATURE BRAND SECTION
+========================================== */
+
+.featured-section {
+  width: 100%;
+  max-width: 1240px;
+
+  margin: 80px auto;
+  padding: 0 24px;
+
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   2. SECTION HEADING
+========================================== */
+
+.featured-heading {
+  width: 100%;
+  max-width: 760px;
+
+  margin: 0 auto 48px;
+  padding: 32px 28px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbf4 100%);
+
+  border: 1px solid black;
+  border-radius: 20px;
+
+  box-shadow: 0 8px 28px rgba(37, 35, 31, 0.04);
+}
+
+/* ==========================================
+   3. SMALL LABEL
+========================================== */
+
+.featured-label {
+  display: inline-block;
+
+  margin: 0 0 16px;
+  padding: 8px 14px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: #456b32;
+  background-color: #edf5e6;
+
+  border: 1px solid #d5e5c8;
+  border-radius: 50px;
+}
+
+/* ==========================================
+   4. MAIN HEADING
+========================================== */
+
+.featured-heading h2 {
+  margin: 0 0 18px;
+
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 500;
+
+  line-height: 1.35;
+  letter-spacing: -0.5px;
+
+  color: #25231f;
+
+  overflow-wrap: break-word;
+}
+
+/* HEADING HIGHLIGHT */
+
+.featured-heading h2 span {
+  color: green;
+}
+
+/* ==========================================
+   5. HEADING DESCRIPTION
+========================================== */
+
+.featured-heading .featured-description {
+  max-width: 540px;
+
+  margin: 0 auto;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+
+  line-height: 1.9;
+
+  color: #756b63;
+}
+
+/* ==========================================
+   6. FABRIC PRODUCT GRID
+========================================== */
+
+.featured-section .fabric-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 22px;
+
+  width: 100%;
+  align-items: stretch;
+}
+
+/* ==========================================
+   7. INDIVIDUAL FABRIC CARD
+========================================== */
+
+.featured-section .fabric-card {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  height: 100%;
+
+  overflow: hidden;
+
+  background-color: #fbf8f3;
+
+  border: 1px solid #e5ddd1;
+  border-radius: 14px;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 4px 16px rgba(37, 35, 31, 0.035);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease;
+}
+
+/* ==========================================
+   8. FABRIC IMAGE CONTAINER
+========================================== */
+
+.featured-section .fabric-image {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 3;
+
+  overflow: hidden;
+
+  background-color: #eee8df;
+}
+
+/* ==========================================
+   9. FABRIC IMAGE
+========================================== */
+
+.featured-section .fabric-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform 0.6s ease;
+}
+
+/* ==========================================
+   10. IMAGE NUMBER BADGE
+========================================== */
+
+.featured-section .fabric-number {
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  z-index: 2;
+
+  padding: 7px 10px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  color: #302b25;
+
+  background-color: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid rgba(79, 120, 56, 0.2);
+  border-radius: 6px;
+
+  backdrop-filter: blur(8px);
+}
+
+/* ==========================================
+   11. FABRIC INFORMATION
+========================================== */
+
+.featured-section .fabric-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  flex: 1;
+
+  padding: 22px 18px 20px;
+
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   12. FABRIC CATEGORY
+========================================== */
+
+.featured-section .fabric-category {
+  margin: 0 0 10px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+
+  line-height: 1.7;
+  letter-spacing: 1.3px;
+
+  color: #4f7838;
+
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   13. FABRIC NAME
+========================================== */
+
+.featured-section .fabric-info h3 {
+  margin: 0 0 10px;
+
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  color: #25231f;
+
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   14. FABRIC DESCRIPTION
+========================================== */
+
+.featured-section .fabric-info .fabric-description {
+  margin: 0 0 22px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+
+  line-height: 1.85;
+
+  color: #756b63;
+}
+
+/* ==========================================
+   15. EXPLORE FABRIC LINK
+========================================== */
+
+.featured-section .fabric-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 8px;
+
+  margin-top: auto;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+
+  line-height: 1.6;
+
+  color: #25231f;
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+/* ARROW */
+
+.featured-section .fabric-link span {
+  display: inline-block;
+
+  font-size: 18px;
+  line-height: 1;
+
+  color: #4f7838;
+
+  transition: transform 0.3s ease;
+}
+
+/* KEYBOARD ACCESSIBILITY */
+
+.featured-section .fabric-link:focus-visible {
+  outline: 2px solid #4f7838;
+  outline-offset: 4px;
+
+  border-radius: 3px;
+}
+
+/* ==========================================
+   16. DESKTOP HOVER EFFECTS
+========================================== */
+
+@media (hover: hover) and (pointer: fine) {
+  .featured-section .fabric-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #b9914b;
+
+    background-color: #ffffff;
+
+    box-shadow: 0 14px 32px rgba(37, 35, 31, 0.09);
+  }
+
+  .featured-section .fabric-card:hover .fabric-image img {
+    transform: scale(1.05);
+  }
+
+  .featured-section .fabric-card:hover .fabric-link {
+    color: green;
+  }
+
+  .featured-section .fabric-card:hover .fabric-link span {
+    transform: translateX(5px);
+  }
+}
+
+/* ==========================================
+   17. TABLET RESPONSIVE
+   Screens up to 900px
+========================================== */
+
+@media (max-width: 900px) {
+  .featured-section {
+    max-width: 760px;
+
+    margin: 65px auto;
+    padding: 0 20px;
+  }
+
+  .featured-heading {
+    max-width: 680px;
+
+    margin-bottom: 38px;
+    padding: 28px 24px;
+  }
+
+  .featured-section .fabric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+  }
+
+  .featured-section .fabric-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .featured-section .fabric-info {
+    padding: 20px 16px;
+  }
+
+  .featured-section .fabric-info h3 {
+    font-size: 17px;
+  }
+}
+
+/* ==========================================
+   18. MOBILE RESPONSIVE
+   Screens up to 600px
+========================================== */
+
+@media (max-width: 600px) {
+  .featured-section {
+    width: 100%;
+
+    margin: 48px auto;
+    padding: 0 16px;
+  }
+
+  .featured-heading {
+    margin-bottom: 28px;
+    padding: 25px 16px;
+
+    border-radius: 16px;
+  }
+
+  .featured-label {
+    margin-bottom: 13px;
+    padding: 7px 11px;
+
+    font-size: 9px;
+    letter-spacing: 1.8px;
+  }
+
+  .featured-heading h2 {
+    margin-bottom: 13px;
+
+    font-size: clamp(25px, 6vw, 34px);
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+
+  .featured-heading .featured-description {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .featured-section .fabric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+  }
+
+  .featured-section .fabric-card {
+    border-radius: 10px;
+  }
+
+  .featured-section .fabric-image {
+    aspect-ratio: 1 / 1;
+  }
+
+  .featured-section .fabric-number {
+    top: 8px;
+    left: 8px;
+
+    padding: 6px 7px;
+
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .featured-section .fabric-info {
+    padding: 14px 11px 16px;
+  }
+
+  .featured-section .fabric-category {
+    margin-bottom: 7px;
+
+    font-size: 8px;
+    line-height: 1.6;
+    letter-spacing: 0.6px;
+  }
+
+  .featured-section .fabric-info h3 {
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .featured-section .fabric-info .fabric-description {
+    margin-bottom: 16px;
+
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .featured-section .fabric-link {
+    gap: 5px;
+
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .featured-section .fabric-link span {
+    font-size: 15px;
+  }
+}
+
+/* ==========================================
+   19. SMALL MOBILE RESPONSIVE
+   Screens up to 360px
+========================================== */
+
+@media (max-width: 360px) {
+  .featured-section {
+    margin: 38px auto;
+    padding: 0 12px;
+  }
+
+  .featured-heading {
+    padding: 22px 12px;
+
+    border-radius: 12px;
+  }
+
+  .featured-heading h2 {
+    font-size: 25px;
+  }
+
+  .featured-label {
+    font-size: 8px;
+    letter-spacing: 1.3px;
+  }
+
+  .featured-heading .featured-description {
+    font-size: 11px;
+  }
+
+  .featured-section .fabric-grid {
+    gap: 10px;
+  }
+
+  .featured-section .fabric-info {
+    padding: 12px 9px 14px;
+  }
+
+  .featured-section .fabric-category {
+    font-size: 7px;
+    letter-spacing: 0.4px;
+  }
+
+  .featured-section .fabric-info h3 {
+    font-size: 12px;
+  }
+
+  .featured-section .fabric-info .fabric-description {
+    font-size: 10px;
+    line-height: 1.65;
+  }
+
+  .featured-section .fabric-link {
+    gap: 4px;
+    font-size: 9px;
+  }
+}
+
+/* ==========================================
+   20. REDUCED MOTION ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-section .fabric-card,
+  .featured-section .fabric-image img,
+  .featured-section .fabric-link,
+  .featured-section .fabric-link span {
+    transition: none;
+  }
+
+  .featured-section .fabric-card:hover {
+    transform: none;
+  }
+
+  .featured-section .fabric-card:hover .fabric-image img {
+    transform: none;
+  }
+
+  .featured-section .fabric-card:hover .fabric-link span {
+    transform: none;
+  }
+}
+
+/* ==========================================
+   END OF FEATURED FABRICS CSS
+========================================== */
+/* =====================================
+   PREMIUM SECTION DIVIDERS
+===================================== */
+
+.section-divider {
+  position: relative;
+
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  height: 1px;
+
+  margin: 0 auto;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    #dfc9a8 15%,
+    #dfc9a8 85%,
+    transparent
+  );
+}
+
+/* GREEN CENTER ACCENT */
+
+.section-divider::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 48px;
+  height: 3px;
+
+  background-color: green;
+  border-radius: 10px;
+
+  transform: translate(-50%, -50%);
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 480px) {
+  .section-divider {
+    width: calc(100% - 32px);
+  }
+
+  .section-divider::after {
+    width: 36px;
+    height: 3px;
+  }
+}
+
+/* ==========================================
+   H&H COLLECTION — WHY CHOOSE SECTION
+========================================== */
+
+/* MAIN SECTION */
+
+.hh-choice-section,
+.hh-choice-section * {
+  box-sizing: border-box;
+}
+
+.hh-choice-section {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+
+  margin: 70px auto;
+  padding: 0;
+}
+
+/* ==========================================
+   SECTION HEADING
+========================================== */
+
+.hh-choice-heading {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto 35px;
+  padding: 28px 24px;
+
+  text-align: center;
+
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbf4 100%);
+
+  border: 1px solid black;
+  border-radius: 20px;
+
+  box-shadow: 0 8px 28px rgba(37, 35, 31, 0.04);
+
+  overflow: hidden;
+}
+
+.hh-choice-label {
+  display: inline-block;
+
+  margin: 0 0 14px;
+  padding: 7px 13px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #456b32;
+
+  background-color: #edf5e6;
+
+  border: 1px solid #d5e5c8;
+  border-radius: 30px;
+}
+
+.hh-choice-heading h2 {
+  margin: 0 0 14px;
+
+  font-family: "Cinzel", Georgia, serif;
+
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 500;
+
+  line-height: 1.4;
+  color: #25231f;
+
+  overflow-wrap: break-word;
+}
+
+.hh-choice-heading h2 span {
+  color: green;
+}
+
+.hh-choice-intro {
+  max-width: 560px;
+
+  margin: 0 auto;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.8;
+
+  color: #756b63;
+}
+
+/* ==========================================
+   CARDS GRID
+========================================== */
+
+.hh-choice-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  align-items: stretch;
+}
+
+/* ==========================================
+   INDIVIDUAL CARD
+========================================== */
+
+.hh-choice-card {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background-color: #fbf8f3;
+
+  border: 1px solid #e5d9c9;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 16px rgba(37, 35, 31, 0.035);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* ==========================================
+   CARD IMAGE CONTAINER
+========================================== */
+
+.hh-choice-section .hh-choice-image {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  height: 220px;
+  min-height: 220px;
+  max-height: 220px;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background-color: #eee5db;
+}
+
+/* IMAGE — FILL THE ENTIRE CONTAINER */
+
+.hh-choice-section .hh-choice-image img {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  max-width: none;
+
+  margin: 0;
+  padding: 0;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform 0.5s ease;
+}
+
+/* IMAGE NUMBER BADGE */
+
+.hh-choice-number {
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  color: #ffffff;
+  background-color: green;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ==========================================
+   CARD CONTENT
+========================================== */
+
+.hh-choice-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+
+  padding: 21px 20px;
+
+  background-color: #fbf8f3;
+}
+
+/* CATEGORY LABEL */
+
+.hh-choice-category {
+  margin: 0 0 9px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+  line-height: 1.7;
+
+  color: #a48549;
+}
+
+/* CARD HEADING */
+
+.hh-choice-content h3 {
+  margin: 0 0 10px;
+
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+
+  line-height: 1.5;
+  color: #25231f;
+
+  overflow-wrap: anywhere;
+}
+
+/* CARD DESCRIPTION */
+
+.hh-choice-description {
+  margin: 0 0 20px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+
+  color: #756b63;
+}
+
+/* ==========================================
+   CARD LINK
+========================================== */
+
+.hh-choice-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: auto;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+
+  color: #25231f;
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.hh-choice-link span {
+  color: green;
+  font-size: 17px;
+
+  transition: transform 0.3s ease;
+}
+
+/* KEYBOARD FOCUS */
+
+.hh-choice-link:focus-visible {
+  outline: 2px solid green;
+  outline-offset: 4px;
+
+  border-radius: 4px;
+}
+
+/* ==========================================
+   HOVER EFFECT
+========================================== */
+
+@media (hover: hover) and (pointer: fine) {
+  .hh-choice-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #b9914b;
+    background-color: #ffffff;
+
+    box-shadow: 0 14px 32px rgba(37, 35, 31, 0.09);
+  }
+
+  .hh-choice-card:hover .hh-choice-image img {
+    transform: scale(1.04);
+  }
+
+  .hh-choice-card:hover .hh-choice-link {
+    color: green;
+  }
+
+  .hh-choice-card:hover .hh-choice-link span {
+    transform: translateX(4px);
+  }
+}
+
+/* ==========================================
+   TABLET RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+  .hh-choice-section {
+    width: calc(100% - 32px);
+    margin: 55px auto;
+  }
+
+  .hh-choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .hh-choice-section .hh-choice-image {
+    height: 210px;
+    min-height: 210px;
+    max-height: 210px;
+  }
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width: 600px) {
+  .hh-choice-section {
+    width: calc(100% - 24px);
+    margin: 45px auto;
+  }
+
+  .hh-choice-heading {
+    padding: 23px 15px;
+    margin-bottom: 25px;
+
+    border-radius: 12px;
+  }
+
+  .hh-choice-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .hh-choice-heading h2 {
+    font-size: clamp(24px, 6vw, 31px);
+    line-height: 1.45;
+  }
+
+  .hh-choice-intro {
+    font-size: 12px;
+  }
+
+  /* ONE CARD PER ROW */
+
+  .hh-choice-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 17px;
+  }
+
+  .hh-choice-section .hh-choice-image {
+    height: 210px;
+    min-height: 210px;
+    max-height: 210px;
+  }
+
+  .hh-choice-content {
+    padding: 19px 16px;
+  }
+}
+
+/* ==========================================
+   SMALL MOBILE — 360px
+========================================== */
+
+@media (max-width: 360px) {
+  .hh-choice-section {
+    width: calc(100% - 20px);
+    margin: 38px auto;
+  }
+
+  .hh-choice-heading {
+    padding: 20px 12px;
+  }
+
+  .hh-choice-heading h2 {
+    font-size: 24px;
+  }
+
+  .hh-choice-intro {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .hh-choice-grid {
+    gap: 15px;
+  }
+
+  .hh-choice-section .hh-choice-image {
+    height: 190px;
+    min-height: 190px;
+    max-height: 190px;
+  }
+
+  .hh-choice-content {
+    padding: 17px 14px;
+  }
+
+  .hh-choice-content h3 {
+    font-size: 16px;
+  }
+
+  .hh-choice-description {
+    font-size: 11px;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hh-choice-card,
+  .hh-choice-section .hh-choice-image img,
+  .hh-choice-link,
+  .hh-choice-link span {
+    transition: none;
+  }
+}
+
+/* ==========================================
+H&H COLLECTION - PREMIUM FOOTER
+========================================== */
+
+.site-footer,
+.site-footer * {
+  box-sizing: border-box;
+}
+
+.site-footer {
+  width: 100%;
+
+  margin-top: 80px;
+  padding: 0;
+
+  background-color: #183324;
+  color: #ffffff;
+
+  border-top: 3px solid #b9914b;
+}
+
+/* ==========================================
+FOOTER MAIN CONTAINER
+========================================== */
+
+.site-footer-inner {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+
+  margin: 0 auto;
+  padding: 55px 0 45px;
+
+  display: grid;
+
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+
+  gap: 38px;
+
+  align-items: start;
+}
+
+/* ==========================================
+FOOTER BRAND
+========================================== */
+
+.site-footer-brand {
+  min-width: 0;
+}
+
+.site-footer-logo {
+  display: inline-block;
+
+  margin: 0 0 20px;
+
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 28px;
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.site-footer-logo span {
+  color: #c4dfa9;
+}
+
+.site-footer-logo:hover {
+  color: #d6bd88;
+}
+
+/* BRAND DESCRIPTION */
+
+.site-footer-description {
+  max-width: 290px;
+
+  margin: 0 0 23px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+
+  line-height: 1.9;
+
+  color: rgba(255, 255, 255, 0.76);
+}
+
+/* SMALL TAGLINE */
+
+.site-footer-tagline {
+  display: flex;
+
+  align-items: center;
+  gap: 9px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+
+  line-height: 1.7;
+
+  color: #d9d8c8;
+}
+
+.footer-accent-dot {
+  display: inline-block;
+
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  background-color: #b9914b;
+  border-radius: 50%;
+}
+
+/* ==========================================
+FOOTER COLUMNS
+========================================== */
+
+.site-footer-column {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+/* COLUMN HEADINGS */
+
+.site-footer-column h3 {
+  position: relative;
+
+  margin: 5px 0 25px;
+  padding-bottom: 12px;
+
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  color: #ffffff;
+}
+
+/* GOLDEN HEADING LINE */
+
+.site-footer-column h3::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 35px;
+  height: 2px;
+
+  background-color: #b9914b;
+
+  border-radius: 5px;
+
+  transition: width 0.3s ease;
+}
+
+.site-footer-column:hover h3::after {
+  width: 55px;
+}
+
+/* FOOTER LINKS */
+
+.site-footer-column > a {
+  display: inline-block;
+
+  max-width: 100%;
+
+  margin-bottom: 14px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.76);
+
+  text-decoration: none;
+
+  overflow-wrap: anywhere;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* LINK HOVER */
+
+.site-footer-column > a:hover {
+  color: #d5e8c1;
+
+  transform: translateX(4px);
+}
+
+/* ==========================================
+FOOTER CONTACT COLUMN
+========================================== */
+
+.site-footer-contact-text {
+  margin: 0 0 19px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+
+  line-height: 1.9;
+
+  color: rgba(255, 255, 255, 0.76);
+}
+
+/* SPECIAL CONTACT LINK */
+
+.site-footer-column > .site-footer-contact-link {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 19px;
+
+  color: #d5e8c1;
+
+  font-weight: 600;
+}
+
+.site-footer-contact-link span {
+  display: inline-block;
+
+  color: #d6bd88;
+  font-size: 17px;
+
+  transition: transform 0.3s ease;
+}
+
+.site-footer-column > .site-footer-contact-link:hover {
+  color: #ffffff;
+}
+
+.site-footer-column > .site-footer-contact-link:hover span {
+  transform: translateX(4px);
+}
+
+/* BACK TO TOP LINK */
+
+.site-footer-column > .site-footer-back-top {
+  padding-bottom: 3px;
+
+  color: #d6bd88;
+
+  border-bottom: 1px solid rgba(214, 189, 136, 0.45);
+}
+
+/* ==========================================
+FOOTER BOTTOM
+========================================== */
+
+.site-footer-bottom {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+
+  margin: 0 auto;
+  padding: 21px 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+/* COPYRIGHT */
+
+.site-footer-bottom p {
+  margin: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.site-footer-bottom-note {
+  letter-spacing: 1px;
+}
+
+/* ==========================================
+TABLET RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+  .site-footer {
+    margin-top: 60px;
+  }
+
+  .site-footer-inner {
+    width: calc(100% - 40px);
+
+    padding: 45px 0 35px;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 35px 28px;
+  }
+
+  .site-footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer-description {
+    max-width: 420px;
+  }
+
+  .site-footer-bottom {
+    width: calc(100% - 40px);
+  }
+}
+
+/* ==========================================
+MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width: 600px) {
+  .site-footer {
+    margin-top: 45px;
+
+    border-top-width: 2px;
+  }
+
+  .site-footer-inner {
+    width: calc(100% - 32px);
+
+    padding: 37px 0 30px;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 30px 18px;
+  }
+
+  /* BRAND AREA */
+
+  .site-footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer-logo {
+    font-size: 25px;
+
+    margin-bottom: 15px;
+  }
+
+  .site-footer-description {
+    max-width: 340px;
+
+    font-size: 12px;
+    line-height: 1.8;
+
+    margin-bottom: 18px;
+  }
+
+  /* FOOTER COLUMNS */
+
+  .site-footer-column h3 {
+    margin: 0 0 20px;
+
+    font-size: 14px;
+  }
+
+  .site-footer-column > a {
+    font-size: 11px;
+
+    margin-bottom: 13px;
+  }
+
+  .site-footer-contact-text {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  /* BOTTOM COPYRIGHT */
+
+  .site-footer-bottom {
+    width: calc(100% - 32px);
+
+    padding: 18px 0;
+
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+  .site-footer-bottom p {
+    font-size: 10px;
+  }
+}
+
+/* ==========================================
+SMALL MOBILE — 360px
+========================================== */
+
+@media (max-width: 360px) {
+  .site-footer-inner {
+    width: calc(100% - 28px);
+
+    padding: 32px 0 26px;
+
+    gap: 27px 15px;
+  }
+
+  .site-footer-logo {
+    font-size: 23px;
+  }
+
+  .site-footer-description {
+    font-size: 11px;
+  }
+
+  .site-footer-column h3 {
+    font-size: 13px;
+    margin-bottom: 17px;
+  }
+
+  .site-footer-column > a {
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  .site-footer-contact-text {
+    font-size: 10px;
+  }
+
+  .site-footer-bottom {
+    width: calc(100% - 28px);
+  }
+}
+
+/* ==========================================
+REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer-logo,
+  .site-footer-column h3::after,
+  .site-footer-column > a,
+  .site-footer-contact-link span {
+    transition: none;
+  }
+}
+
+
+
+/* ==========================================
+     The End
+========================================== */
